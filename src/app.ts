@@ -1,22 +1,28 @@
-console.log("I beg your pardon");
-let userInput: unknown;
-let userName: string;
+class Department {
+  // private name: string;
+  private employees: string[] = [];
 
-userInput = 5;
-userInput = "Max";
+  constructor(private readonly id: string, private name: string) {
+    // this.name = n;
+  }
 
-if (typeof userInput === "string") {
-  userName = userInput;
+  describe(this: Department) {
+    console.log(`Department: ${this.id} ${this.name}`);
+  }
+
+  addEmployee(employee: string) {
+    this.employees.push(employee);
+  }
+
+  printEmployeeInformation() {
+    console.log(this.employees.length);
+    console.log(this.employees);
+  }
 }
 
-const button = document.querySelector("button");
-
-button?.addEventListener("click", (event) => {
-  console.log(event);
-});
-
-function generateError(message: string, code: number): never {
-  throw { message: message, errorCode: code };
-}
-
-generateError("An error occured", 500);
+const accounting = new Department("Acc1", "Accounting");
+accounting.addEmployee("Max");
+accounting.addEmployee("Francisco");
+// accounting.employees[2] = "Anne";
+accounting.describe();
+accounting.printEmployeeInformation();
