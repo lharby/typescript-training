@@ -29,4 +29,4 @@ class PersonObj {
 
 const person = new PersonObj();
 
-console.log(person);
+console.log(person, "hi");
